@@ -5,7 +5,7 @@
 <!-- markdownlint-enable line-length -->
 
 Multi-arch (`linux/amd64`, `linux/arm64/v8`) Mojo Dev Container.  
-👉 All [prerequisites](https://github.com/modularml/mojo/blob/nightly/stdlib/docs/development.md#prerequisites)
+🔥 All [prerequisites](https://github.com/modularml/mojo/blob/nightly/stdlib/docs/development.md#prerequisites)
 installed for Mojo standard library development.
 
 Parent image: [`glcr.b-data.ch/mojo/base:nightly`](https://github.com/b-data/mojo-docker-stack)
@@ -130,6 +130,9 @@ To disable the `postStartCommand` or `postAttachCommand`, comment out line 8 in
 
 Use the **Dev Containers: Reopen in Container** command from the Command Palette
 (`F1`, `⇧⌘P` (Windows, Linux `Ctrl+Shift+P`))
+
+ℹ️ For further information, see
+[Developing inside a Container using Visual Studio Code Remote Development](https://code.visualstudio.com/docs/devcontainers/containers).
 
 ### Persistence
 
