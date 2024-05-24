@@ -1,0 +1,72 @@
+{
+  "name": "Mojo (nightly)",
+  "build": {
+    "dockerfile": "Mojo.Dockerfile",
+    "args": {
+      "MOJO_VERSION": "nightly",
+      "MOJO_REPOSITORY": "https://github.com/modularml/mojo.git",
+      "LLVM_VERSION": "17",
+      "USE_ZSH_FOR_ROOT": "unset-to-use-bash",
+      "LANG": "en_US.UTF-8",
+      "TZ": "Etc/UTC"
+    }
+  },
+
+  "onCreateCommand": "onCreateCommand.sh",
+  "postStartCommand": "${HOME}/.local/bin/dockerSystemPrune.sh",
+  "postAttachCommand": "${HOME}/.local/bin/checkForUpdates.sh",
+
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "configureZshAsDefaultShell": true,
+      "upgradePackages": false,
+      "username": "vscode",
+      "userUid": "automatic",
+      "userGid": "automatic"
+    },
+    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
+      "moby": false
+    }
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "DavidAnson.vscode-markdownlint",
+        "eamodio.gitlens@11.7.0",
+        "editorconfig.editorconfig",
+        "exiasr.hadolint",
+        "GitHub.vscode-pull-request-github",
+        "mhutchie.git-graph",
+        "modular-mojotools.vscode-mojo-nightly",
+        "ms-azuretools.vscode-docker",
+        "ms-python.black-formatter",
+        "ms-python.python",
+        "ms-toolsai.jupyter",
+        "mutantdino.resourcemonitor",
+        "redhat.vscode-yaml",
+        "timonwong.shellcheck"
+      ],
+      "settings": {
+        "gitlens.showWelcomeOnInstall": false,
+        "gitlens.showWhatsNewAfterUpgrades": false,
+        "resmon.show.battery": false,
+        "resmon.show.cpufreq": false
+      }
+    }
+  },
+
+  // Set 'remoteUser' to 'root' to connect as root instead.
+  "remoteUser": "vscode",
+  "workspaceMount": "source=mojo-home-vscode,target=/home/vscode,type=volume",
+  "workspaceFolder": "/home/vscode/projects/modularml/mojo",
+
+  // "remoteUser": "root",
+  // "workspaceMount": "source=mojo-root,target=/root,type=volume",
+  // "workspaceFolder": "/root/projects/modularml/mojo",
+
+  "remoteEnv": {
+    // Pip: Install packages to the user site
+    "PIP_USER": "1"
+  }
+}
