@@ -1,0 +1,16 @@
+*
+
+!/.devcontainer/
+!/.github/
+
+!/.github/FUNDING.yml
+
+!/.editorconfig
+!/.gitattributes
+!/.gitignore
+!/.hadolint.yml
+!/.markdownlint.yml
+!/CODE_OF_CONDUCT.md
+!/LICENSE
+!/README.md
+!/SECURITY.md
