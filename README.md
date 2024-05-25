@@ -16,9 +16,9 @@ Parent image: [`glcr.b-data.ch/mojo/base:nightly`](https://github.com/b-data/moj
 * **Git**: A distributed version-control system for tracking changes in source
   code.
 * **Git LFS**: A Git extension for versioning large files.
-* **LLVM**: A collection of modular and reusable compiler and toolchain
-  technologies.
-* **Mojo**: A programming language for AI developers.
+* **LLVM** (optional, installed): A collection of modular and reusable compiler
+  and toolchain technologies.
+* **Mojo (nightly)**: A programming language for AI developers.
 * **Pandoc**: A universal markup converter.
 * **Python**: An interpreted, object-oriented, high-level programming language
   with dynamic semantics.
@@ -84,7 +84,9 @@ To install Podman, follow the instructions for your platform:
 
 ## Usage
 
-This custom Mojo Dev Container behaves in a unique way:
+The Mojo Dev Container is not intended for work on this repository, but rather
+for [Mojo standard library development](https://github.com/modularml/mojo/blob/nightly/stdlib/docs/development.md)
+and behaves in a unique way:
 
 1. Default mount:
     * source: empty directory
@@ -95,6 +97,8 @@ This custom Mojo Dev Container behaves in a unique way:
     * target: `/workspaces`
     * type: misc
 1. Default path: `/home/vscode/projects/modularml/mojo`
+    * Repository: <https://github.com/modularml/mojo.git>
+    * Branch: nightly
 1. Default user: `vscode`
     * uid: 1000 (auto-assigned)
     * gid: 1000 (auto-assigned)

@@ -5,7 +5,7 @@
     "args": {
       "MOJO_VERSION": "nightly",
       "MOJO_REPOSITORY": "https://github.com/modularml/mojo.git",
-      "LLVM_VERSION": "17",
+      "LLVM_VERSION": "17", // optional
       "USE_ZSH_FOR_ROOT": "unset-to-use-bash",
       "LANG": "en_US.UTF-8",
       "TZ": "Etc/UTC"

@@ -1,7 +1,7 @@
 ARG BUILD_ON_IMAGE=glcr.b-data.ch/mojo/base
 ARG MOJO_VERSION=nightly
 ARG MOJO_REPOSITORY=https://github.com/modularml/mojo.git
-ARG LLVM_VERSION=17
+ARG LLVM_VERSION
 
 FROM ${BUILD_ON_IMAGE}:${MOJO_VERSION} as files
 
@@ -49,7 +49,7 @@ ENV PARENT_IMAGE=${BUILD_ON_IMAGE}:${MOJO_VERSION} \
     PARENT_IMAGE_BUILD_DATE=${BUILD_DATE} \
     LLVM_VERSION=${LLVM_VERSION}
 
-ENV PATH=/usr/lib/llvm-${LLVM_VERSION}/bin:$PATH
+ENV PATH=${LLVM_VERSION:+/usr/lib/llvm-}${LLVM_VERSION}${LLVM_VERSION:+/bin:}$PATH
 
 RUN dpkgArch="$(dpkg --print-architecture)" \
   ## Ensure that common CA certificates
@@ -74,21 +74,30 @@ RUN dpkgArch="$(dpkg --print-architecture)" \
     /root/.lldb \
     /root/.local \
 ## Install tools for buildig and testing the Mojo standard library
-  ## Install LLVM
-  && apt-get -y install --no-install-recommends \
-    lsb-release \
-    software-properties-common \
-  && curl -sSLO https://apt.llvm.org/llvm.sh \
-  && chmod +x llvm.sh \
-  && ./llvm.sh "$LLVM_VERSION" \
+  && if [ -n "$LLVM_VERSION" ]; then \
+    ## Install LLVM
+    apt-get -y install --no-install-recommends \
+      lsb-release \
+      software-properties-common; \
+    curl -sSLO https://apt.llvm.org/llvm.sh; \
+    chmod +x llvm.sh; \
+    ./llvm.sh "$LLVM_VERSION"; \
+    ## Clean up
+    rm -rf llvm.sh \
+      /root/.ssh \
+      /root/.wget-hsts; \
+  else \
+    ## Install FileCheck
+    apt-get -y install --no-install-recommends llvm-14-tools; \
+    cp -a /usr/lib/llvm-14/bin/FileCheck /usr/local/bin/FileCheck; \
+    ## Clean up
+    apt-get -y purge llvm-14-tools; \
+    apt-get -y autoremove; \
+  fi \
   ## Install lit
   && pip install --no-cache-dir lit \
   ## Install pre-commit
   && pip install --no-cache-dir pre-commit \
-  ## Clean up
-  && rm -rf llvm.sh \
-    /root/.ssh \
-    /root/.wget-hsts \
 ## Dev Container only
   ## Install hadolint
   && case "$dpkgArch" in \
