@@ -69,24 +69,27 @@ Parent image: [`glcr.b-data.ch/mojo/base:nightly`](https://github.com/b-data/moj
 2. Repository name: mojo
 3. Untick "**Copy the `main` branch only**"
 
-Local: Dev Containers require either Docker or Podman to be installed.
+Local: Dev Containers require VS Code and either Docker or Podman to be
+installed.
 
 Web: Codespaces require no installation.
 
 ## Install
 
+### VS Code
+
+[Set up Visual Studio Code](https://code.visualstudio.com/docs/setup/setup-overview)
+and install the [Remote Development Extension Pack](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack).
+
 ### Docker
 
-To install Docker, follow the instructions for your platform:
+See [Install Docker Engine | Docker Docs](https://docs.docker.com/engine/install).
 
-* [Install Docker Engine | Docker Documentation > Supported platforms](https://docs.docker.com/engine/install/#supported-platforms)
-* [Post-installation steps for Linux](https://docs.docker.com/engine/install/linux-postinstall/)
+* Docker CE: [Post-installation steps for Linux](https://docs.docker.com/engine/install/linux-postinstall/)
 
 ### Podman
 
-To install Podman, follow the instructions for your platform:
-
-* [Podman Installation | Podman](https://podman.io/docs/installation)
+See [Podman Installation | Podman](https://podman.io/docs/installation).
 
 ## Usage
 
