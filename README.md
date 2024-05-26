@@ -63,9 +63,15 @@ Parent image: [`glcr.b-data.ch/mojo/base:nightly`](https://github.com/b-data/moj
 
 ## Prerequisites
 
-Dev Containers require either Docker or Podman to be installed.
+[A fork of the Mojo repository](https://github.com/modularml/mojo/fork):
 
-Codespaces require no installation.
+1. Owner: Your GitHub username
+2. Repository name: mojo
+3. Untick "**Copy the `main` branch only**"
+
+Local: Dev Containers require either Docker or Podman to be installed.
+
+Web: Codespaces require no installation.
 
 ## Install
 
@@ -131,6 +137,8 @@ To disable the `postStartCommand` or `postAttachCommand`, comment out line 8 in
 – [Creating a codespace for a repository - GitHub Docs](https://docs.github.com/en/codespaces/developing-in-codespaces/creating-a-codespace-for-a-repository#creating-a-codespace-for-a-repository)
 
 ### Local/'Remote SSH'
+
+Set `OWN_REPOSITORY_URL` in [devcontainer.json](.devcontainer/devcontainer.json).
 
 Use the **Dev Containers: Reopen in Container** command from the Command Palette
 (`F1`, `⇧⌘P` (Windows, Linux `Ctrl+Shift+P`))

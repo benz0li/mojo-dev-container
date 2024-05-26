@@ -4,7 +4,7 @@
     "dockerfile": "Mojo.Dockerfile",
     "args": {
       "MOJO_VERSION": "nightly",
-      "MOJO_REPOSITORY": "https://github.com/modularml/mojo.git",
+      "UPSTREAM_REPOSITORY_URL": "https://github.com/modularml/mojo.git",
       "LLVM_VERSION": "17", // optional
       "USE_ZSH_FOR_ROOT": "unset-to-use-bash",
       "LANG": "en_US.UTF-8",
@@ -66,6 +66,9 @@
   // "workspaceFolder": "/root/projects/modularml/mojo",
 
   "remoteEnv": {
+    // Local: Set URL for own repository
+    // "OWN_REPOSITORY_URL": "git@github.com:$GITHUB_USER/mojo.git",
+    //
     // Pip: Install packages to the user site
     "PIP_USER": "1"
   }

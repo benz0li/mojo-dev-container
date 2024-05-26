@@ -1,6 +1,6 @@
 ARG BUILD_ON_IMAGE=glcr.b-data.ch/mojo/base
 ARG MOJO_VERSION=nightly
-ARG MOJO_REPOSITORY=https://github.com/modularml/mojo.git
+ARG UPSTREAM_REPOSITORY_URL=https://github.com/modularml/mojo.git
 ARG LLVM_VERSION
 
 FROM ${BUILD_ON_IMAGE}:${MOJO_VERSION} as mojo
@@ -85,7 +85,7 @@ RUN dpkgArch="$(dpkg --print-architecture)" \
 FROM ${BUILD_ON_IMAGE}:${MOJO_VERSION} as files
 
 ARG MOJO_VERSION
-ARG MOJO_REPOSITORY
+ARG UPSTREAM_REPOSITORY_URL
 
 RUN mkdir /files
 
@@ -98,7 +98,7 @@ RUN find /files -type d -exec chmod 755 {} \; \
   && find /files/etc/skel/.local/bin -type f -exec chmod 755 {} \; \
   && find /files/usr/local/bin -type f -exec chmod 755 {} \; \
   ## Clone Mojo's repository
-  && git clone "$MOJO_REPOSITORY" /files/etc/skel/projects/modularml/mojo \
+  && git clone "$UPSTREAM_REPOSITORY_URL" /files/etc/skel/projects/modularml/mojo \
   && git -C /files/etc/skel/projects/modularml/mojo remote rename origin upstream \
   && if [ "$MOJO_VERSION" = "nightly" ]; then \
     ## Checkout branch nightly
@@ -158,9 +158,9 @@ RUN if [ -n "$USE_ZSH_FOR_ROOT" ]; then \
   fi
 
 ## Set repository environment variable
-ARG MOJO_REPOSITORY
+ARG UPSTREAM_REPOSITORY_URL
 
-ENV MOJO_REPOSITORY=${MOJO_REPOSITORY}
+ENV UPSTREAM_REPOSITORY_URL=${UPSTREAM_REPOSITORY_URL}
 
 ## Unset environment variable BUILD_DATE
 ENV BUILD_DATE=
