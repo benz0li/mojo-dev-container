@@ -3,41 +3,6 @@ ARG MOJO_VERSION=nightly
 ARG MOJO_REPOSITORY=https://github.com/modularml/mojo.git
 ARG LLVM_VERSION
 
-FROM ${BUILD_ON_IMAGE}:${MOJO_VERSION} as files
-
-ARG MOJO_VERSION
-ARG MOJO_REPOSITORY
-
-RUN mkdir /files
-
-COPY conf/shell /files
-COPY scripts /files
-
-  ## Ensure file modes are correct
-RUN find /files -type d -exec chmod 755 {} \; \
-  && find /files -type f -exec chmod 644 {} \; \
-  && find /files/etc/skel/.local/bin -type f -exec chmod 755 {} \; \
-  && find /files/usr/local/bin -type f -exec chmod 755 {} \; \
-  ## Clone Mojo's repository
-  && git clone "$MOJO_REPOSITORY" /files/etc/skel/projects/modularml/mojo \
-  && if [ "$MOJO_VERSION" = "nightly" ]; then \
-    ## Checkout branch nightly
-    git -C /files/etc/skel/projects/modularml/mojo checkout nightly; \
-  fi \
-  ## Install pre-commit
-  && pip install --no-cache-dir pre-commit \
-  && cd /files/etc/skel/projects/modularml/mojo \
-  && pre-commit install \
-  ## Clean up
-  && rm -rf /root/.cache \
-  ## Copy skeleton files for root
-  && cp -r /files/etc/skel/. /files/root \
-  ## except .bashrc and .profile
-  && bash -c 'rm -rf /files/root/{.bashrc,.profile}' \
-  && chmod 700 /files/root
-
-FROM docker.io/koalaman/shellcheck:stable as sci
-
 FROM ${BUILD_ON_IMAGE}:${MOJO_VERSION} as mojo
 
 ARG DEBIAN_FRONTEND=noninteractive
@@ -117,7 +82,49 @@ RUN dpkgArch="$(dpkg --print-architecture)" \
   && rm -rf /tmp/* \
   && rm -rf /var/lib/apt/lists/*
 
+FROM ${BUILD_ON_IMAGE}:${MOJO_VERSION} as files
+
+ARG MOJO_VERSION
+ARG MOJO_REPOSITORY
+
+RUN mkdir /files
+
+COPY conf/shell /files
+COPY scripts /files
+
+  ## Ensure file modes are correct
+RUN find /files -type d -exec chmod 755 {} \; \
+  && find /files -type f -exec chmod 644 {} \; \
+  && find /files/etc/skel/.local/bin -type f -exec chmod 755 {} \; \
+  && find /files/usr/local/bin -type f -exec chmod 755 {} \; \
+  ## Clone Mojo's repository
+  && git clone "$MOJO_REPOSITORY" /files/etc/skel/projects/modularml/mojo \
+  && git -C /files/etc/skel/projects/modularml/mojo remote rename origin upstream \
+  && if [ "$MOJO_VERSION" = "nightly" ]; then \
+    ## Checkout branch nightly
+    git -C /files/etc/skel/projects/modularml/mojo checkout nightly; \
+  fi \
+  ## Install pre-commit
+  && pip install --no-cache-dir pre-commit \
+  && cd /files/etc/skel/projects/modularml/mojo \
+  && pre-commit install \
+  ## Clean up
+  && rm -rf /root/.cache \
+  ## Copy skeleton files for root
+  && cp -r /files/etc/skel/. /files/root \
+  ## except .bashrc and .profile
+  && bash -c 'rm -rf /files/root/{.bashrc,.profile}' \
+  && chmod 700 /files/root
+
+FROM docker.io/koalaman/shellcheck:stable as sci
+
 FROM mojo
+
+## Copy files as late as possible to avoid cache busting
+COPY --from=files /files /
+
+## Copy shellcheck as late as possible to avoid cache busting
+COPY --from=sci --chown=root:root /bin/shellcheck /usr/local/bin
 
 ARG DEBIAN_FRONTEND=noninteractive
 
@@ -150,11 +157,10 @@ RUN if [ -n "$USE_ZSH_FOR_ROOT" ]; then \
     update-locale --reset LANG="$LANG"; \
   fi
 
-## Copy files as late as possible to avoid cache busting
-COPY --from=files /files /
+## Set repository environment variable
+ARG MOJO_REPOSITORY
 
-## Copy shellcheck as late as possible to avoid cache busting
-COPY --from=sci --chown=root:root /bin/shellcheck /usr/local/bin
+ENV MOJO_REPOSITORY=${MOJO_REPOSITORY}
 
 ## Unset environment variable BUILD_DATE
 ENV BUILD_DATE=
