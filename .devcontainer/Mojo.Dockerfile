@@ -8,6 +8,9 @@ FROM ${BUILD_ON_IMAGE}:${MOJO_VERSION} as mojo
 ARG DEBIAN_FRONTEND=noninteractive
 
 ARG BUILD_ON_IMAGE
+ARG MODULAR_TELEMETRY_ENABLE
+ARG MODULAR_TELEMETRY_LEVEL
+ARG MODULAR_CRASHREPORTING_ENABLE
 ARG LLVM_VERSION
 
 ENV PARENT_IMAGE=${BUILD_ON_IMAGE}:${MOJO_VERSION} \
@@ -32,6 +35,15 @@ RUN dpkgArch="$(dpkg --print-architecture)" \
   && if [ "$MOJO_VERSION" = "nightly" ]; then \
     ## Update Mojo nightly
     modular update nightly/mojo; \
+  fi \
+  && if [ -n "$MODULAR_TELEMETRY_ENABLE" ]; then \
+    ## Enable telemetry level 2
+    modular config-set telemetry.enabled=true; \
+    modular config-set telemetry.level="$MODULAR_TELEMETRY_LEVEL"; \
+  fi \
+  && if [ -n "$MODULAR_CRASHREPORTING_ENABLE" ]; then \
+    ## Enable crash reporting
+    modular config-set crash_reporting.enabled=true; \
   fi \
   ## Clean up
   && rm -rf /root/.cache \
