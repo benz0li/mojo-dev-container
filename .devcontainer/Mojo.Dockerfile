@@ -8,9 +8,6 @@ FROM ${BUILD_ON_IMAGE}:${MOJO_VERSION} as mojo
 ARG DEBIAN_FRONTEND=noninteractive
 
 ARG BUILD_ON_IMAGE
-ARG MODULAR_TELEMETRY_ENABLE
-ARG MODULAR_TELEMETRY_LEVEL
-ARG MODULAR_CRASHREPORTING_ENABLE
 ARG LLVM_VERSION
 
 ENV PARENT_IMAGE=${BUILD_ON_IMAGE}:${MOJO_VERSION} \
@@ -35,15 +32,6 @@ RUN dpkgArch="$(dpkg --print-architecture)" \
   && if [ "$MOJO_VERSION" = "nightly" ]; then \
     ## Update Mojo nightly
     modular update nightly/mojo; \
-  fi \
-  && if [ -n "$MODULAR_TELEMETRY_ENABLE" ]; then \
-    ## Enable telemetry level 2
-    modular config-set telemetry.enabled=true; \
-    modular config-set telemetry.level="$MODULAR_TELEMETRY_LEVEL"; \
-  fi \
-  && if [ -n "$MODULAR_CRASHREPORTING_ENABLE" ]; then \
-    ## Enable crash reporting
-    modular config-set crash_reporting.enabled=true; \
   fi \
   ## Clean up
   && rm -rf /root/.cache \
@@ -139,6 +127,25 @@ COPY --from=files /files /
 COPY --from=sci --chown=root:root /bin/shellcheck /usr/local/bin
 
 ARG DEBIAN_FRONTEND=noninteractive
+
+## Update Modular settings
+ARG MODULAR_TELEMETRY_ENABLE
+ARG MODULAR_TELEMETRY_LEVEL
+ARG MODULAR_CRASHREPORTING_ENABLE
+
+RUN if [ -n "$MODULAR_TELEMETRY_ENABLE" ]; then \
+    ## Enable telemetry level 2
+    modular config-set telemetry.enabled=true; \
+    modular config-set telemetry.level="$MODULAR_TELEMETRY_LEVEL"; \
+  fi \
+  && if [ -n "$MODULAR_CRASHREPORTING_ENABLE" ]; then \
+    ## Enable crash reporting
+    modular config-set crash_reporting.enabled=true; \
+  fi \
+  ## Change ownership and permission for MODULAR_HOME
+  && chown -R :1000 "$MODULAR_HOME" \
+  && chmod -R g+w "$MODULAR_HOME" \
+  && chmod -R g+rx "$MODULAR_HOME/crashdb"
 
 ## Update environment
 ARG USE_ZSH_FOR_ROOT
