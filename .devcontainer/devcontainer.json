@@ -61,11 +61,11 @@
 
   // Set 'remoteUser' to 'root' to connect as root instead.
   "remoteUser": "vscode",
-  "workspaceMount": "source=mojo-home-vscode,target=/home/vscode,type=volume",
+  "workspaceMount": "source=mojo-nightly-home-vscode,target=/home/vscode,type=volume",
   "workspaceFolder": "/home/vscode/projects/modularml/mojo",
 
   // "remoteUser": "root",
-  // "workspaceMount": "source=mojo-root,target=/root,type=volume",
+  // "workspaceMount": "source=mojo-nightly-root,target=/root,type=volume",
   // "workspaceFolder": "/root/projects/modularml/mojo",
 
   "remoteEnv": {
