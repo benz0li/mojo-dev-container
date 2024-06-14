@@ -1,10 +1,10 @@
-# Mojo Dev Container
+# Mojo dev container
 
 <!-- markdownlint-disable line-length -->
 [![minimal-readme compliant](https://img.shields.io/badge/readme%20style-minimal-brightgreen.svg)](https://github.com/RichardLitt/standard-readme/blob/main/example-readmes/minimal-readme.md) [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active) <a href="https://liberapay.com/benz0li/donate"><img src="https://liberapay.com/assets/widgets/donate.svg" alt="Donate using Liberapay" height="20"></a> <a href='https://codespaces.new/benz0li/mojo-dev-container?hide_repo_select=true&ref=main'><img src='https://github.com/codespaces/badge.svg' alt='Open in GitHub Codespaces' height="20" style='max-width: 100%;'></a>
 <!-- markdownlint-enable line-length -->
 
-Multi-arch (`linux/amd64`, `linux/arm64/v8`) Mojo Dev Container.  
+Multi-arch (`linux/amd64`, `linux/arm64/v8`) Mojo dev container.  
 🔥 All [prerequisites](https://github.com/modularml/mojo/blob/nightly/stdlib/docs/development.md#prerequisites)
 installed for Mojo standard library development.
 
@@ -69,7 +69,7 @@ Parent image: [`glcr.b-data.ch/mojo/base:nightly`](https://github.com/b-data/moj
 2. Repository name: mojo
 3. Untick "**Copy the `main` branch only**"
 
-Local: Dev Containers require VS Code and either Docker or Podman to be
+Local: Dev containers require VS Code and either Docker or Podman to be
 installed.
 
 Web: Codespaces require no installation.
@@ -93,7 +93,7 @@ See [Podman Installation | Podman](https://podman.io/docs/installation).
 
 ## Usage
 
-The Mojo Dev Container is not intended for work on this repository, but rather
+The Mojo dev container is not intended for work on this repository, but rather
 for [Mojo standard library development](https://github.com/modularml/mojo/blob/nightly/stdlib/docs/development.md)
 and behaves in a unique way:
 
@@ -117,7 +117,7 @@ and behaves in a unique way:
     * [`postStartCommand`](.devcontainer/scripts/etc/skel/.local/bin/dockerSystemPrune.sh):
       Codespace only: Silently remove all unused images and all build cache
     * [`postAttachCommand`](.devcontainer/scripts/etc/skel/.local/bin/checkForUpdates.sh):
-      Codespace only: Check for Dev Container updates
+      Codespace only: Check for dev container updates
 
 To disable the `postStartCommand` or `postAttachCommand`, comment out line 8 in
 `~/.local/bin/dockerSystemPrune.sh` or `~/.local/bin/checkForUpdates.sh`.  
@@ -154,7 +154,7 @@ Use the **Dev Containers: Reopen in Container** command from the Command Palette
 Data in the following locations is persisted:
 
 1. The user's home directory (`/home/vscode`)[^1]
-1. The Dev Container's workspace (`/workspaces`)
+1. The dev container's workspace (`/workspaces`)
 
 [^1]: Alternatively for the root user (`/root`). Use with Docker/Podman in
 *rootless mode*.

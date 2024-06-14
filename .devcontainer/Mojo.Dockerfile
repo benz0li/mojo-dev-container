@@ -63,7 +63,7 @@ RUN dpkgArch="$(dpkg --print-architecture)" \
   && pip install --no-cache-dir lit \
   ## Install pre-commit
   && pip install --no-cache-dir pre-commit \
-## Dev Container only
+## Dev container only
   ## Install hadolint
   && case "$dpkgArch" in \
     amd64) tarArch="x86_64" ;; \

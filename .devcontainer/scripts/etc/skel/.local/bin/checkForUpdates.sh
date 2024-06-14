@@ -4,5 +4,5 @@
 
 set -e
 
-# Codespace only: Check for Mojo Dev Containers updates
+# Codespace only: Check for Mojo dev container updates
 if [ -n "$CODESPACES" ]; then git -C "/workspaces/$RepositoryName" pull -q; fi
