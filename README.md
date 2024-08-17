@@ -36,6 +36,7 @@ Parent image: [`glcr.b-data.ch/mojo/base:nightly`](https://github.com/b-data/moj
 * [Docker](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker)
 * [EditorConfig for VS Code](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
 * [Git Graph](https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph)
+* [GitHub Actions](https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-github-actions)
 * [GitHub Pull Requests and Issues](https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github)
 * [GitLens — Git supercharged](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)  
   ℹ️ Pinned to version 11.7.0 due to unsolicited AI content

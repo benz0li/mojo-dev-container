@@ -172,7 +172,7 @@ RUN if [ -n "$USE_ZSH_FOR_ROOT" ]; then \
     locale-gen; \
   fi \
   && update-locale --reset LANG="$LANG" \
-  # Info about locale
+  ## Info about locale
   && echo "LANG is set to $LANG"
 
 ## Set repository environment variable
