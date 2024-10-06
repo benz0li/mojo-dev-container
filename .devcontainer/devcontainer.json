@@ -5,9 +5,8 @@
     "args": {
       "MOJO_VERSION": "nightly",
       "UPSTREAM_REPOSITORY_URL": "https://github.com/modularml/mojo.git",
-      "LLVM_VERSION": "17", // optional
+      "LLVM_VERSION": "18", // optional
       "MODULAR_TELEMETRY_ENABLE": "unset-to-keep-disabled",
-      "MODULAR_TELEMETRY_LEVEL": "2", // Set to 0 to disable
       "MODULAR_CRASHREPORTING_ENABLE": "unset-to-keep-disabled",
       "USE_ZSH_FOR_ROOT": "unset-to-use-bash",
       "LANG": "en_US.UTF-8",
@@ -17,7 +16,7 @@
 
   "onCreateCommand": "onCreateCommand.sh",
   "postStartCommand": "${HOME}/.local/bin/dockerSystemPrune.sh",
-  "postAttachCommand": "${HOME}/.local/bin/checkForUpdates.sh",
+  "postAttachCommand": "${HOME}/.local/bin/checkForUpdates.sh && postAttachCommand.sh",
 
   "features": {
     "ghcr.io/devcontainers/features/common-utils:2": {

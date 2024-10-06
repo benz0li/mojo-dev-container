@@ -17,27 +17,14 @@ ENV PARENT_IMAGE=${BUILD_ON_IMAGE}:${MOJO_VERSION} \
 ENV PATH=${LLVM_VERSION:+/usr/lib/llvm-}${LLVM_VERSION}${LLVM_VERSION:+/bin:}$PATH
 
 RUN dpkgArch="$(dpkg --print-architecture)" \
+  ## Add user to group users
+  && sed -i- "s/users:x:100:/users:x:100:vscode/g" /etc/group \
   ## Ensure that common CA certificates
   ## and OpenSSL libraries are up to date
   && apt-get update \
   && apt-get -y install --no-install-recommends --only-upgrade \
     ca-certificates \
     openssl \
-## Install Modular
-  && apt-get -y install --no-install-recommends \
-    apt-transport-https \
-  && curl -s https://dl.modular.com/public/installer/setup.deb.sh | bash - \
-  && apt-get -y install --no-install-recommends \
-    modular \
-  && if [ "$MOJO_VERSION" = "nightly" ]; then \
-    ## Update Mojo nightly
-    modular update nightly/mojo; \
-  fi \
-  ## Clean up
-  && rm -rf /root/.cache \
-    /root/.ipython \
-    /root/.lldb \
-    /root/.local \
 ## Install tools for buildig and testing the Mojo standard library
   && if [ -n "$LLVM_VERSION" ]; then \
     ## Install LLVM
@@ -132,22 +119,16 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 ## Update Modular settings
 ARG MODULAR_TELEMETRY_ENABLE
-ARG MODULAR_TELEMETRY_LEVEL
 ARG MODULAR_CRASHREPORTING_ENABLE
 
 RUN if [ -n "$MODULAR_TELEMETRY_ENABLE" ]; then \
-    ## Enable telemetry level 2
-    modular config-set telemetry.enabled=true; \
-    modular config-set telemetry.level="$MODULAR_TELEMETRY_LEVEL"; \
+    ## Enable telemetry
+    sed -i '/[Tt]elemetry/!b;n;cenabled = true' "$MODULAR_HOME/modular.cfg"; \
   fi \
   && if [ -n "$MODULAR_CRASHREPORTING_ENABLE" ]; then \
     ## Enable crash reporting
-    modular config-set crash_reporting.enabled=true; \
-  fi \
-  ## Change ownership and permission for MODULAR_HOME
-  && chown -R :1000 "$MODULAR_HOME" \
-  && chmod -R g+w "$MODULAR_HOME" \
-  && chmod -R g+rx "$MODULAR_HOME/crashdb"
+    sed -i '/[Cc]rash/!b;n;cenabled = true' "$MODULAR_HOME/modular.cfg"; \
+  fi
 
 ## Update environment
 ARG USE_ZSH_FOR_ROOT

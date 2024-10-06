@@ -4,6 +4,7 @@
 
 set -e
 
+# Create user's private bin
 mkdir -p "$HOME/.local/bin"
 
 # Add own repository as origin
