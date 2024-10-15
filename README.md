@@ -28,6 +28,9 @@ Parent image: [`glcr.b-data.ch/mojo/base:nightly`](https://github.com/b-data/moj
 </p>
 </details>
 
+:information_source: Regading [Magic](https://docs.modular.com/magic/), see
+<https://github.com/benz0li/mojo-dev-container/issues/2>
+
 <details><summary><b>Pre-installed extensions</b></summary>
 <p>
 
