@@ -5,7 +5,7 @@
 <!-- markdownlint-enable line-length -->
 
 Multi-arch (`linux/amd64`, `linux/arm64/v8`) Mojo dev container.  
-🔥 All [prerequisites](https://github.com/modularml/mojo/blob/nightly/stdlib/docs/development.md#prerequisites)
+🔥 All [prerequisites](https://github.com/modular/mojo/blob/main/stdlib/docs/development.md#prerequisites)
 installed for Mojo standard library development.
 
 Parent image: [`glcr.b-data.ch/mojo/base:nightly`](https://github.com/b-data/mojo-docker-stack)
@@ -67,11 +67,10 @@ issue <https://github.com/benz0li/mojo-dev-container/issues/2>.
 
 ## Prerequisites
 
-[A fork of the Mojo repository](https://github.com/modularml/mojo/fork):
+[A fork of the Mojo repository](https://github.com/modular/mojo/fork):
 
 1. Owner: Your GitHub username
 2. Repository name: mojo
-3. Untick "**Copy the `main` branch only**"
 
 Local: Dev containers require VS Code and either Docker or Podman to be
 installed.
@@ -98,7 +97,7 @@ See [Podman Installation | Podman](https://podman.io/docs/installation).
 ## Usage
 
 The Mojo dev container is not intended for work on this repository, but rather
-for [Mojo standard library development](https://github.com/modularml/mojo/blob/nightly/stdlib/docs/development.md)
+for [Mojo standard library development](https://github.com/modular/mojo/blob/main/stdlib/docs/development.md)
 and behaves in a unique way:
 
 1. Default mount:
@@ -109,9 +108,9 @@ and behaves in a unique way:
     * source: root of this repository
     * target: `/workspaces`
     * type: misc
-1. Default path: `/home/vscode/projects/modularml/mojo`
-    * Repository: <https://github.com/modularml/mojo.git>
-    * Branch: nightly
+1. Default path: `/home/vscode/projects/modular/mojo`
+    * Repository: <https://github.com/modular/mojo.git>
+    * Branch: main
 1. Default user: `vscode`
     * uid: 1000 (auto-assigned)
     * gid: 1000 (auto-assigned)
@@ -171,7 +170,7 @@ preconfigured.
 
 ## Similar project
 
-* [modularml/mojo](https://github.com/modularml/mojo/tree/main/examples)
+* [modular/mojo](https://github.com/modular/mojo/tree/main/examples)
 
 What makes this project different:
 

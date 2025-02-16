@@ -9,38 +9,36 @@ mkdir -p "$HOME/.local/bin"
 
 # Add own repository as origin
 if [ -n "$CODESPACES" ]; then
-  OWN_REPOSITORY_URL=${UPSTREAM_REPOSITORY_URL//modularml/$GITHUB_USER}
+  OWN_REPOSITORY_URL=${UPSTREAM_REPOSITORY_URL//modular/$GITHUB_USER}
 else
   if [ -z "$OWN_REPOSITORY_URL" ]; then
     ADD_OWN_REPOSITORY_URL=1
   fi
 fi
-if git -C "$HOME/projects/modularml/mojo" remote | grep -q origin ; then
-  if [ "$(git -C "$HOME/projects/modularml/mojo" remote get-url origin)" != "$OWN_REPOSITORY_URL" ]; then
-    git -C "$HOME/projects/modularml/mojo" remote remove origin
+if git -C "$HOME/projects/modular/mojo" remote | grep -q origin ; then
+  if [ "$(git -C "$HOME/projects/modular/mojo" remote get-url origin)" != "$OWN_REPOSITORY_URL" ]; then
+    git -C "$HOME/projects/modular/mojo" remote remove origin
   else
     NO_ADD_REMOTE=1
   fi
 fi
 if [ -z "$NO_ADD_REMOTE" ] && [ -z "$ADD_OWN_REPOSITORY_URL" ]; then
-  git -C "$HOME/projects/modularml/mojo" remote add origin "$OWN_REPOSITORY_URL"
+  git -C "$HOME/projects/modular/mojo" remote add origin "$OWN_REPOSITORY_URL"
 fi
 
-# Set remote-tracking branches to origin
+# Set remote-tracking branch to origin
 if [ -z "$NO_ADD_REMOTE" ]; then
-  if git -C "$HOME/projects/modularml/mojo" ls-remote --exit-code origin; then
-    git -C "$HOME/projects/modularml/mojo" fetch origin
-    git -C "$HOME/projects/modularml/mojo" branch -u origin/main main
-    git -C "$HOME/projects/modularml/mojo" branch -u origin/nightly nightly
+  if git -C "$HOME/projects/modular/mojo" ls-remote --exit-code origin; then
+    git -C "$HOME/projects/modular/mojo" fetch origin
+    git -C "$HOME/projects/modular/mojo" branch -u origin/main main
   else
     if [ -z "$ADD_OWN_REPOSITORY_URL" ]; then
-      git -C "$HOME/projects/modularml/mojo" remote remove origin
+      git -C "$HOME/projects/modular/mojo" remote remove origin
     fi
     echo
     echo "Please fork the Mojo repository"
     echo "  1. Owner: Your GitHub username"
     echo "  2. Repository name: mojo"
-    echo "  3. Untick \"Copy the \`main\` branch only\""
     if [ -n "$ADD_OWN_REPOSITORY_URL" ]; then
       printf "set OWN_REPOSITORY_URL "
     fi
