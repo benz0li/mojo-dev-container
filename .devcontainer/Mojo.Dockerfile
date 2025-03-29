@@ -1,6 +1,6 @@
 ARG BUILD_ON_IMAGE=glcr.b-data.ch/mojo/base
 ARG MOJO_VERSION=nightly
-ARG UPSTREAM_REPOSITORY_URL=https://github.com/modular/mojo.git
+ARG UPSTREAM_REPOSITORY_URL=https://github.com/modular/max.git
 ARG LLVM_VERSION
 
 FROM ${BUILD_ON_IMAGE}:${MOJO_VERSION} as mojo
@@ -87,11 +87,11 @@ RUN find /files -type d -exec chmod 755 {} \; \
   && find /files/etc/skel/.local/bin -type f -exec chmod 755 {} \; \
   && find /files/usr/local/bin -type f -exec chmod 755 {} \; \
   ## Clone Mojo's repository
-  && git clone "$UPSTREAM_REPOSITORY_URL" /files/etc/skel/projects/modular/mojo \
-  && git -C /files/etc/skel/projects/modular/mojo remote rename origin upstream \
+  && git clone "$UPSTREAM_REPOSITORY_URL" /files/etc/skel/projects/modular/max \
+  && git -C /files/etc/skel/projects/modular/max remote rename origin upstream \
   ## Install pre-commit
   && pip install --no-cache-dir pre-commit \
-  && cd /files/etc/skel/projects/modular/mojo \
+  && cd /files/etc/skel/projects/modular/max \
   && pre-commit install \
   ## Clean up
   && rm -rf /root/.cache \

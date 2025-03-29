@@ -15,25 +15,25 @@ else
     ADD_OWN_REPOSITORY_URL=1
   fi
 fi
-if git -C "$HOME/projects/modular/mojo" remote | grep -q origin ; then
-  if [ "$(git -C "$HOME/projects/modular/mojo" remote get-url origin)" != "$OWN_REPOSITORY_URL" ]; then
-    git -C "$HOME/projects/modular/mojo" remote remove origin
+if git -C "$HOME/projects/modular/max" remote | grep -q origin ; then
+  if [ "$(git -C "$HOME/projects/modular/max" remote get-url origin)" != "$OWN_REPOSITORY_URL" ]; then
+    git -C "$HOME/projects/modular/max" remote remove origin
   else
     NO_ADD_REMOTE=1
   fi
 fi
 if [ -z "$NO_ADD_REMOTE" ] && [ -z "$ADD_OWN_REPOSITORY_URL" ]; then
-  git -C "$HOME/projects/modular/mojo" remote add origin "$OWN_REPOSITORY_URL"
+  git -C "$HOME/projects/modular/max" remote add origin "$OWN_REPOSITORY_URL"
 fi
 
 # Set remote-tracking branch to origin
 if [ -z "$NO_ADD_REMOTE" ]; then
-  if git -C "$HOME/projects/modular/mojo" ls-remote --exit-code origin; then
-    git -C "$HOME/projects/modular/mojo" fetch origin
-    git -C "$HOME/projects/modular/mojo" branch -u origin/main main
+  if git -C "$HOME/projects/modular/max" ls-remote --exit-code origin; then
+    git -C "$HOME/projects/modular/max" fetch origin
+    git -C "$HOME/projects/modular/max" branch -u origin/main main
   else
     if [ -z "$ADD_OWN_REPOSITORY_URL" ]; then
-      git -C "$HOME/projects/modular/mojo" remote remove origin
+      git -C "$HOME/projects/modular/max" remote remove origin
     fi
     echo
     echo "Please fork the Mojo repository"
