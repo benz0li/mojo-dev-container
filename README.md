@@ -67,10 +67,10 @@ issue <https://github.com/benz0li/mojo-dev-container/issues/2>.
 
 ## Prerequisites
 
-[A fork of the Mojo repository](https://github.com/modular/max/fork):
+[A fork of the MAX repository](https://github.com/modular/max/fork):
 
 1. Owner: Your GitHub username
-2. Repository name: mojo
+2. Repository name: max
 
 Local: Dev containers require VS Code and either Docker or Podman to be
 installed.

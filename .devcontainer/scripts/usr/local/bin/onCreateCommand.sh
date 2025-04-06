@@ -36,9 +36,9 @@ if [ -z "$NO_ADD_REMOTE" ]; then
       git -C "$HOME/projects/modular/max" remote remove origin
     fi
     echo
-    echo "Please fork the Mojo repository"
+    echo "Please fork the MAX repository"
     echo "  1. Owner: Your GitHub username"
-    echo "  2. Repository name: mojo"
+    echo "  2. Repository name: max"
     if [ -n "$ADD_OWN_REPOSITORY_URL" ]; then
       printf "set OWN_REPOSITORY_URL "
     fi
