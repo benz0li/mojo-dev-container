@@ -51,6 +51,7 @@
       ],
       "settings": {
         "git.alwaysSignOff": true,
+        "git.openRepositoryInParentFolders": "always",
         "gitlens.showWelcomeOnInstall": false,
         "gitlens.showWhatsNewAfterUpgrades": false,
         "resmon.show.battery": false,
@@ -62,11 +63,11 @@
   // Set 'remoteUser' to 'root' to connect as root instead.
   "remoteUser": "vscode",
   "workspaceMount": "source=mojo-nightly-home-vscode,target=/home/vscode,type=volume",
-  "workspaceFolder": "/home/vscode/projects/modular/max",
+  "workspaceFolder": "/home/vscode/projects/modular/max/mojo",
 
   // "remoteUser": "root",
   // "workspaceMount": "source=mojo-nightly-root,target=/root,type=volume",
-  // "workspaceFolder": "/root/projects/modular/max",
+  // "workspaceFolder": "/root/projects/modular/max/mojo",
 
   "remoteEnv": {
     // Local: Set URL for own repository

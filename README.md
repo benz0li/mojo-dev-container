@@ -97,8 +97,17 @@ See [Podman Installation | Podman](https://podman.io/docs/installation).
 ## Usage
 
 The Mojo dev container is not intended for work on this repository, but rather
-for [Mojo standard library development](https://github.com/modular/max/blob/main/mojo/stdlib/docs/development.md)
-and behaves in a unique way:
+for [Mojo standard library development](https://github.com/modular/max/blob/main/mojo/stdlib/docs/development.md).
+
+Everything is pre-installed – no Magic required. Just execute a task's shell
+command in the terminal:
+
+* build: `./stdlib/scripts/build-stdlib.sh`
+* tests: `./stdlib/scripts/run-tests.sh`
+* examples: `../examples/mojo/run-examples.sh`
+* benchmarks: `./stdlib/scripts/run-benchmarks.sh`
+
+For this, the dev container is set up in a unique way:
 
 1. Default mount:
     * source: empty directory
@@ -108,7 +117,7 @@ and behaves in a unique way:
     * source: root of this repository
     * target: `/workspaces`
     * type: misc
-1. Default path: `/home/vscode/projects/modular/max`
+1. Default path: `/home/vscode/projects/modular/max/mojo`
     * Repository: <https://github.com/modular/max.git>
     * Branch: main
 1. Default user: `vscode`
