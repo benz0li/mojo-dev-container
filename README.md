@@ -5,7 +5,7 @@
 <!-- markdownlint-enable line-length -->
 
 Multi-arch (`linux/amd64`, `linux/arm64/v8`) Mojo dev container.  
-🔥 All [prerequisites](https://github.com/modular/max/blob/main/mojo/stdlib/docs/development.md#prerequisites)
+🔥 All [prerequisites](https://github.com/modular/modular/blob/main/mojo/stdlib/docs/development.md#prerequisites)
 installed for Mojo standard library development.
 
 Parent image: [`glcr.b-data.ch/mojo/base:nightly`](https://github.com/b-data/mojo-docker-stack)
@@ -67,7 +67,7 @@ issue <https://github.com/benz0li/mojo-dev-container/issues/2>.
 
 ## Prerequisites
 
-[A fork of the MAX repository](https://github.com/modular/max/fork):
+[A fork of the MAX repository](https://github.com/modular/modular/fork):
 
 1. Owner: Your GitHub username
 2. Repository name: max
@@ -97,7 +97,7 @@ See [Podman Installation | Podman](https://podman.io/docs/installation).
 ## Usage
 
 The Mojo dev container is not intended for work on this repository, but rather
-for [Mojo standard library development](https://github.com/modular/max/blob/main/mojo/stdlib/docs/development.md).
+for [Mojo standard library development](https://github.com/modular/modular/blob/main/mojo/stdlib/docs/development.md).
 
 Everything is pre-installed – no Magic required. Just execute a task's shell
 command in the terminal:
@@ -117,8 +117,8 @@ For this, the dev container is set up in a unique way:
     * source: root of this repository
     * target: `/workspaces`
     * type: misc
-1. Default path: `/home/vscode/projects/modular/max/mojo`
-    * Repository: <https://github.com/modular/max.git>
+1. Default path: `/home/vscode/projects/modular/modular/mojo`
+    * Repository: <https://github.com/modular/modular.git>
     * Branch: main
 1. Default user: `vscode`
     * uid: 1000 (auto-assigned)
@@ -179,7 +179,7 @@ preconfigured.
 
 ## Similar project
 
-* [modular/max](https://github.com/modular/max/tree/main/examples)
+* [modular/modular](https://github.com/modular/modular/tree/main/examples)
 
 What makes this project different:
 

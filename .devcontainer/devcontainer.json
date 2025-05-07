@@ -3,7 +3,7 @@
   "build": {
     "dockerfile": "Mojo.Dockerfile",
     "args": {
-      "UPSTREAM_REPOSITORY_URL": "https://github.com/modular/max.git",
+      "UPSTREAM_REPOSITORY_URL": "https://github.com/modular/modular.git",
       "LLVM_VERSION": "18", // optional
       "MODULAR_TELEMETRY_ENABLE": "unset-to-keep-disabled",
       "MODULAR_CRASHREPORTING_ENABLE": "unset-to-keep-disabled",
@@ -63,11 +63,11 @@
   // Set 'remoteUser' to 'root' to connect as root instead.
   "remoteUser": "vscode",
   "workspaceMount": "source=mojo-nightly-home-vscode,target=/home/vscode,type=volume",
-  "workspaceFolder": "/home/vscode/projects/modular/max/mojo",
+  "workspaceFolder": "/home/vscode/projects/modular/modular/mojo",
 
   // "remoteUser": "root",
   // "workspaceMount": "source=mojo-nightly-root,target=/root,type=volume",
-  // "workspaceFolder": "/root/projects/modular/max/mojo",
+  // "workspaceFolder": "/root/projects/modular/modular/mojo",
 
   "remoteEnv": {
     // Local: Set URL for own repository
