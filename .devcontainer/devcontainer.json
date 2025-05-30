@@ -41,7 +41,7 @@
         "GitHub.vscode-pull-request-github",
         "mhutchie.git-graph",
         "modular-mojotools.vscode-mojo-nightly",
-        "ms-azuretools.vscode-docker",
+        "ms-azuretools.vscode-containers",
         "ms-python.black-formatter",
         "ms-python.python",
         "ms-toolsai.jupyter",

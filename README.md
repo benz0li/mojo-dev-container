@@ -36,7 +36,7 @@ issue <https://github.com/benz0li/mojo-dev-container/issues/2>.
 
 <!-- markdownlint-disable line-length -->
 * [Black Formatter](https://marketplace.visualstudio.com/items?itemName=ms-python.black-formatter)
-* [Docker](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker)
+* [Container Tools](https://open-vsx.org/extension/ms-azuretools/vscode-containers)
 * [EditorConfig for VS Code](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
 * [Git Graph](https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph)
 * [GitHub Actions](https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-github-actions)
