@@ -28,3 +28,5 @@ their copyrights are listed below.
 .devcontainer/scripts/etc/skel/.local/bin/dockerSystemPrune.sh
 .devcontainer/scripts/usr/local/bin/onCreateCommand.sh
 Copyright (c) 2023 b-data GmbH.
+
+--------------------------------------------------------------------------------
