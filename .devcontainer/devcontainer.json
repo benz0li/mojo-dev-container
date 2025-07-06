@@ -13,6 +13,7 @@
     }
   },
 
+  "initializeCommand": "eval $(ssh-agent) && ssh-add || exit 0",
   "onCreateCommand": "onCreateCommand.sh",
   "postStartCommand": "${HOME}/.local/bin/dockerSystemPrune.sh",
   "postAttachCommand": "${HOME}/.local/bin/checkForUpdates.sh && postAttachCommand.sh",
