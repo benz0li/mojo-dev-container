@@ -9,7 +9,7 @@ mkdir -p "$HOME/.local/bin"
 
 # Add own repository as origin
 if [ -n "$CODESPACES" ]; then
-  OWN_REPOSITORY_URL=${UPSTREAM_REPOSITORY_URL//modular/$GITHUB_USER}
+  OWN_REPOSITORY_URL=${UPSTREAM_REPOSITORY_URL//modular\/modular/$GITHUB_USER\/modular}
 else
   if [ -z "$OWN_REPOSITORY_URL" ]; then
     ADD_OWN_REPOSITORY_URL=1
