@@ -23,4 +23,6 @@
 
 !/.gitignore
 !/devcontainer.json
+!/init
+!/init.cmd
 !/Mojo.Dockerfile

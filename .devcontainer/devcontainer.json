@@ -13,7 +13,7 @@
     }
   },
 
-  "initializeCommand": "eval $(ssh-agent) && ssh-add || exit 0",
+  "initializeCommand": [".devcontainer/init"],
   "onCreateCommand": "onCreateCommand.sh",
   "postStartCommand": "${HOME}/.local/bin/dockerSystemPrune.sh",
   "postAttachCommand": "${HOME}/.local/bin/checkForUpdates.sh && postAttachCommand.sh",
@@ -72,7 +72,7 @@
 
   "remoteEnv": {
     // Local: Set URL for own repository
-    // "OWN_REPOSITORY_URL": "git@github.com:$GITHUB_USER/modular.git",
+    "OWN_REPOSITORY_URL": "git@github.com:benz0li/modular.git",
     //
     // Pip: Install packages to the user site
     "PIP_USER": "1"
