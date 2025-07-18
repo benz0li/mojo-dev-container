@@ -79,6 +79,7 @@ ARG UPSTREAM_REPOSITORY_URL
 RUN mkdir /files
 
 COPY conf/shell /files
+COPY vsix /files
 COPY scripts /files
 
   ## Ensure file modes are correct

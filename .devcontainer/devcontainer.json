@@ -61,10 +61,6 @@
     }
   },
 
-  "mounts": [
-    "source=${localWorkspaceFolder}/.devcontainer/extensions,target=/var/tmp/extensions,type=bind"
-  ],
-
   // Set 'remoteUser' to 'root' to connect as root instead.
   "remoteUser": "vscode",
   "workspaceMount": "source=mojo-nightly-home-vscode,target=/home/vscode,type=volume",
