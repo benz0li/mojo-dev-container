@@ -35,7 +35,7 @@
     "vscode": {
       "extensions": [
         "DavidAnson.vscode-markdownlint",
-        "eamodio.gitlens@11.7.0",
+        "/var/tmp/extensions/eamodio.gitlens-11.7.0.vsix",
         "editorconfig.editorconfig",
         "exiasr.hadolint",
         "GitHub.vscode-github-actions",
@@ -60,6 +60,10 @@
       }
     }
   },
+
+  "mounts": [
+    "source=${localWorkspaceFolder}/.devcontainer/extensions,target=/var/tmp/extensions,type=bind"
+  ],
 
   // Set 'remoteUser' to 'root' to connect as root instead.
   "remoteUser": "vscode",
