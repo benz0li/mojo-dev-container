@@ -1,20 +1,15 @@
 ARG BUILD_ON_IMAGE=glcr.b-data.ch/mojo/base
 ARG MOJO_VERSION=nightly
 ARG UPSTREAM_REPOSITORY_URL=https://github.com/modular/modular.git
-ARG LLVM_VERSION
 
 FROM ${BUILD_ON_IMAGE}:${MOJO_VERSION} as mojo
 
 ARG DEBIAN_FRONTEND=noninteractive
 
 ARG BUILD_ON_IMAGE
-ARG LLVM_VERSION
 
 ENV PARENT_IMAGE=${BUILD_ON_IMAGE}:${MOJO_VERSION} \
-    PARENT_IMAGE_BUILD_DATE=${BUILD_DATE} \
-    LLVM_VERSION=${LLVM_VERSION}
-
-ENV PATH=${LLVM_VERSION:+/usr/lib/llvm-}${LLVM_VERSION}${LLVM_VERSION:+/bin:}$PATH
+    PARENT_IMAGE_BUILD_DATE=${BUILD_DATE}
 
 RUN dpkgArch="$(dpkg --print-architecture)" \
   ## Add user to group users
@@ -26,32 +21,11 @@ RUN dpkgArch="$(dpkg --print-architecture)" \
     ca-certificates \
     openssl \
 ## Install tools for buildig and testing the Mojo standard library
-  && if [ -n "$LLVM_VERSION" ]; then \
-    ## Install LLVM
-    apt-get -y install --no-install-recommends \
-      lsb-release \
-      software-properties-common; \
-    curl -sSLO https://apt.llvm.org/llvm.sh; \
-    chmod +x llvm.sh; \
-    ./llvm.sh "$LLVM_VERSION"; \
-    ## Clean up
-    rm -rf llvm.sh \
-      /root/.ssh \
-      /root/.wget-hsts; \
-  else \
-    ## Install FileCheck
-    apt-get -y install --no-install-recommends llvm-14-tools; \
-    cp -a /usr/lib/llvm-14/bin/FileCheck /usr/local/bin/FileCheck; \
-    ## Clean up
-    apt-get -y purge llvm-14-tools; \
-    apt-get -y autoremove; \
-  fi \
-  ## Install lit
-  && pip install --no-cache-dir lit \
+  && apt-get -y install --no-install-recommends \
+    lsb-release \
+    software-properties-common \
   ## Install pre-commit
   && pip install --no-cache-dir pre-commit \
-  ## Install entr
-  && apt-get -y install --no-install-recommends entr \
 ## Dev container only
   ## Create backup of root directory
   && cp -a /root /var/backups \

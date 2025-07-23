@@ -16,8 +16,6 @@ Parent image: [`glcr.b-data.ch/mojo/base:nightly`](https://github.com/b-data/moj
 * **Git**: A distributed version-control system for tracking changes in source
   code.
 * **Git LFS**: A Git extension for versioning large files.
-* **LLVM** (optional, installed): A collection of modular and reusable compiler
-  and toolchain technologies.
 * **Mojo (nightly)**: A programming language for AI developers.
 * **Pandoc**: A universal markup converter.
 * **Python**: An interpreted, object-oriented, high-level programming language

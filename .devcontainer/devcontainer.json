@@ -4,7 +4,6 @@
     "dockerfile": "Mojo.Dockerfile",
     "args": {
       "UPSTREAM_REPOSITORY_URL": "https://github.com/modular/modular.git",
-      "LLVM_VERSION": "18", // optional
       "MODULAR_TELEMETRY_ENABLE": "unset-to-keep-disabled",
       "MODULAR_CRASHREPORTING_ENABLE": "unset-to-keep-disabled",
       "USE_ZSH_FOR_ROOT": "unset-to-use-bash",
