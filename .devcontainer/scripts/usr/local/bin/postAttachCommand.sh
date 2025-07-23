@@ -22,7 +22,7 @@ while :
   fi
 done
 
-# MAX SDK: Create symlink to /opt/modular
+# MAX SDK: Create symlink to /usr/local
 mkdir -p "$extDataDir/magic-data-home/envs"
-ln -snf /opt/modular "$extDataDir/magic-data-home/envs/max"
+ln -snf /usr/local "$extDataDir/magic-data-home/envs/max"
 mkdir -p "$extDataDir/versionDone/$sdkVersion"
