@@ -97,13 +97,10 @@ See [Podman Installation | Podman](https://podman.io/docs/installation).
 The Mojo dev container is not intended for work on this repository, but rather
 for [Mojo standard library development](https://github.com/modular/modular/blob/main/mojo/stdlib/docs/development.md).
 
-Everything is pre-installed – no Pixi required. Just execute a task's
+Everything is pre-installed – no Pixi required. Just execute the task's
 shell command in the terminal:
 
-* build: `./stdlib/scripts/build-stdlib.sh`
 * tests: `./stdlib/scripts/run-tests.sh`
-* examples: `../examples/mojo/run-examples.sh`
-* benchmarks: `./stdlib/scripts/run-benchmarks.sh`
 
 For this, the dev container is set up in a unique way:
 
