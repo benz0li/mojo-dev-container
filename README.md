@@ -26,7 +26,7 @@ Parent image: [`glcr.b-data.ch/mojo/base:nightly`](https://github.com/b-data/moj
 </p>
 </details>
 
-:information_source: Regading [Magic](https://docs.modular.com/magic/), see
+:information_source: Regading [Pixi](https://docs.modular.com/pixi/), see
 issue <https://github.com/benz0li/mojo-dev-container/issues/2>.
 
 <details><summary><b>Pre-installed extensions</b></summary>
@@ -97,8 +97,8 @@ See [Podman Installation | Podman](https://podman.io/docs/installation).
 The Mojo dev container is not intended for work on this repository, but rather
 for [Mojo standard library development](https://github.com/modular/modular/blob/main/mojo/stdlib/docs/development.md).
 
-Everything is pre-installed – no Magic required. Just execute a task's shell
-command in the terminal:
+Everything is pre-installed – no Pixi required. Just execute a task's
+shell command in the terminal:
 
 * build: `./stdlib/scripts/build-stdlib.sh`
 * tests: `./stdlib/scripts/run-tests.sh`
