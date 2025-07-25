@@ -49,6 +49,16 @@ if [ -z "$NO_ADD_REMOTE" ]; then
   fi
 fi
 
+# Append the user's pixi bin dir to PATH
+if ! grep -q "user's pixi bin dir" "$HOME/.bashrc"; then
+  mkdir -p "$HOME/.pixi/bin"
+  echo -e echo "\n# Append the user's pixi bin dir to PATH\nif [[ \"\$PATH\" != *\"\$HOME/.pixi/bin\"* ]] ; then\n    PATH=\"\$PATH:\$HOME/.pixi/bin\"\nfi" >> "$HOME/.bashrc"
+fi
+if ! grep -q "user's pixi bin dir" "$HOME/.zshrc"; then
+  mkdir -p "$HOME/.pixi/bin"
+  echo -e echo "\n# Append the user's pixi bin dir to PATH\nif [[ \"\$PATH\" != *\"\$HOME/.pixi/bin\"* ]] ; then\n    PATH=\"\$PATH:\$HOME/.pixi/bin\"\nfi" >> "$HOME/.zshrc"
+fi
+
 # Prepend the user's private bin to PATH
 if ! grep -q "user's private bin" "$HOME/.bashrc"; then
   cat "/var/tmp/snippets/rc.sh" >> "$HOME/.bashrc"
