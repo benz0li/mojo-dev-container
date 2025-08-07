@@ -25,4 +25,5 @@ done
 # MAX SDK: Create symlink to /usr/local
 mkdir -p "$extDataDir/magic-data-home/envs"
 ln -snf /usr/local "$extDataDir/magic-data-home/envs/max"
+ln -snf /usr/local "$extDataDir/magic-data-home/envs/mojo"
 mkdir -p "$extDataDir/versionDone/$sdkVersion"
