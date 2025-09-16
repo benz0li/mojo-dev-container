@@ -21,11 +21,10 @@ RUN dpkgArch="$(dpkg --print-architecture)" \
     ca-certificates \
     openssl \
 ## Install tools for buildig and testing the Mojo standard library
-  && apt-get -y install --no-install-recommends \
-    lsb-release \
-    software-properties-common \
   ## Install pre-commit
   && pip install --no-cache-dir pre-commit \
+  ## Make symlink that is expected to exist
+  && ln -s /usr/local/bin/python3 /usr/bin/python3 \
 ## Dev container only
   ## Create backup of root directory
   && cp -a /root /var/backups \
