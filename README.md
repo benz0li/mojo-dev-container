@@ -44,7 +44,7 @@ issue <https://github.com/benz0li/mojo-dev-container/issues/2>.
 * [hadolint](https://marketplace.visualstudio.com/items?itemName=exiasr.hadolint)
 * [Jupyter](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter)
 * [markdownlint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint)
-* [Mojo 🔥 (nightly)](https://marketplace.visualstudio.com/items?itemName=modular-mojotools.vscode-mojo-nightly)
+* [Mojo 🔥](https://marketplace.visualstudio.com/items?itemName=modular-mojotools.vscode-mojo)
 * [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
 * [Resource Monitor](https://marketplace.visualstudio.com/items?itemName=mutantdino.resourcemonitor)
 * [ShellCheck](https://marketplace.visualstudio.com/items?itemName=timonwong.shellcheck)
