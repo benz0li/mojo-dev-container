@@ -50,6 +50,7 @@
         "timonwong.shellcheck"
       ],
       "settings": {
+        "chat.disableAIFeatures": true,
         "git.alwaysSignOff": true,
         "git.openRepositoryInParentFolders": "always",
         "gitlens.showWelcomeOnInstall": false,
