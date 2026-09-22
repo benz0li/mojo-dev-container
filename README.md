@@ -112,7 +112,7 @@ For this, the dev container is set up in a unique way:
     * source: root of this repository
     * target: `/workspaces`
     * type: misc
-1. Default path: `/home/vscode/projects/modular/modular/mojo`
+1. Default path: `/home/vscode/projects/modular/modular/Mojo`
     * Repository: <https://github.com/modular/modular.git>
     * Branch: main
 1. Default user: `vscode`
